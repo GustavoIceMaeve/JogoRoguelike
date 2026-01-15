@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RoguelikeConsole")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e99428711633e3741b8642e80ca6dd47015da65")]
 [assembly: System.Reflection.AssemblyProductAttribute("RoguelikeConsole")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RoguelikeConsole")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
