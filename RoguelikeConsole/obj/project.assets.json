@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gusta\\OneDrive\\Documentos\\ProjetosCSharp\\JogoRoguelike\\RoguelikeConsole\\RoguelikeConsole.csproj",
+      "projectUniqueName": "C:\\Users\\gusta\\OneDrive\\Documentos\\GitHub\\JogoRoguelike\\RoguelikeConsole\\RoguelikeConsole.csproj",
       "projectName": "RoguelikeConsole",
-      "projectPath": "C:\\Users\\gusta\\OneDrive\\Documentos\\ProjetosCSharp\\JogoRoguelike\\RoguelikeConsole\\RoguelikeConsole.csproj",
+      "projectPath": "C:\\Users\\gusta\\OneDrive\\Documentos\\GitHub\\JogoRoguelike\\RoguelikeConsole\\RoguelikeConsole.csproj",
       "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gusta\\OneDrive\\Documentos\\ProjetosCSharp\\JogoRoguelike\\RoguelikeConsole\\obj\\",
+      "outputPath": "C:\\Users\\gusta\\OneDrive\\Documentos\\GitHub\\JogoRoguelike\\RoguelikeConsole\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -67,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
