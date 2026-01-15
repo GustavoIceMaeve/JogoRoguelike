@@ -61,13 +61,13 @@ namespace RoguelikeConsole
             Console.Clear();
             Console.WriteLine("==========BEM-VINDO A LOJA ========");
             int preco = 1;
-            foreach(Item i in itemsDaLoja)
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            foreach (Item i in itemsDaLoja)
             {
-                Console.BackgroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"{i.GetNome()} -- +{i.GetVida()} -- &{i.getArmadura()} -- *{i.getDano()} -- ${preco*2}");
                 preco++;
             }
-            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("====================================");
 
         }
