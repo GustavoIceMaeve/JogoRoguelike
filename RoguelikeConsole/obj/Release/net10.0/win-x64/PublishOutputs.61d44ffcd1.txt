@@ -1,5 +1,0 @@
-C:\Users\gusta\OneDrive\Documentos\ProjetosCSharp\JogoRoguelike\RoguelikeConsole\bin\Release\net10.0\win-x64\publish\RoguelikeConsole.exe
-C:\Users\gusta\OneDrive\Documentos\ProjetosCSharp\JogoRoguelike\RoguelikeConsole\bin\Release\net10.0\win-x64\publish\RoguelikeConsole.dll
-C:\Users\gusta\OneDrive\Documentos\ProjetosCSharp\JogoRoguelike\RoguelikeConsole\bin\Release\net10.0\win-x64\publish\RoguelikeConsole.deps.json
-C:\Users\gusta\OneDrive\Documentos\ProjetosCSharp\JogoRoguelike\RoguelikeConsole\bin\Release\net10.0\win-x64\publish\RoguelikeConsole.runtimeconfig.json
-C:\Users\gusta\OneDrive\Documentos\ProjetosCSharp\JogoRoguelike\RoguelikeConsole\bin\Release\net10.0\win-x64\publish\RoguelikeConsole.pdb
