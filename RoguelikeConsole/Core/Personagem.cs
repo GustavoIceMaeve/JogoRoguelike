@@ -7,41 +7,57 @@ namespace RoguelikeConsole
 {
     public class Personagem
     {
-        string Nome;
-        string Classe;
-        int Vida;
-        int Ouro=0;
+        public string Nome { get; set; }
+        public string Classe { get; set; }
+        public int Vida {get; set; }
+        public int Ouro { get; set; }
         public Inventario Inventario;
 
-        int VidaBase = 10;
-        int ArmaduraBase = 0;
-        int DanoBase = 1;
+        int VidaBase { get; set; }
+        int ArmaduraBase { get; set; }
+        int DanoBase { get; set; }
+        public enum EscolhaClasse
 
-        public Personagem(string nome,int vida,Inventario inventario )
+        {
+            Guerreiro = 1,
+            Espadachim = 2,
+            Riquinho = 3
+        }
+
+        public Personagem(string nome,Inventario inventario,int resposta )
         {
             Nome = nome;
             Inventario = inventario;
-            Vida = vida;
+            EscolhaClasse classeEscolhida = (EscolhaClasse)resposta;
+            Console.WriteLine($"{classeEscolhida}, {classeEscolhida == EscolhaClasse.Guerreiro},");
 
-        }
-
-        public void ClasseDoPersonagem(int classe)
-        {
-            if(classe == 1)
-            {    
+            if (classeEscolhida == EscolhaClasse.Guerreiro)
+            {
                 VidaBase = 15;
+                ArmaduraBase = 0;
+                DanoBase = 1; 
+                Ouro = 0;
                 Classe = "Guerreiro";
             }
-            else if(classe == 2)
-            {   
-                DanoBase = 2;
+            else if (classeEscolhida == EscolhaClasse.Espadachim)
+            {
+                VidaBase = 10;
+                ArmaduraBase = 0;
+                DanoBase = 1;
+                Ouro = 0;
                 Classe = "Espadachim";
             }
             else
-            {   
+            {
+                VidaBase = 15;
+                ArmaduraBase = 0;
+                DanoBase = 1;
                 Ouro = 4;
                 Classe = "Riquinho";
             }
+
+            Vida = VidaBase;
+
         }
 
         public void Status()
@@ -64,6 +80,7 @@ namespace RoguelikeConsole
                 Console.WriteLine($"{Inventario.item[i].StatusItem()}");
             }
         }
+
         public int VidaMaxima()
         {
             return VidaBase+Inventario.StatusItem(1);
@@ -85,16 +102,12 @@ namespace RoguelikeConsole
         {
             Vida+=VidaAdicionada;
         }
-        public int VidaAtual()
-        {
-            return Vida;
-        }
 
         public void VerificarVida()
         {
-            if(VidaAtual() > VidaMaxima())
+            if(Vida > VidaMaxima())
             {
-                setVida(VidaMaxima());
+                Vida = VidaMaxima();
             }
         }
 
@@ -116,22 +129,9 @@ namespace RoguelikeConsole
             }
         }
 
-        public string GetNome()
-        {
-            return Nome;
-        }
         public void adicionarOuro(int bonus)
         {
             Ouro+=bonus;
-        }
-        public int getOuro()
-        {
-            return Ouro;
-        }
-
-        public void setVida(int vida)
-        {
-            Vida = vida;
         }
 
     }

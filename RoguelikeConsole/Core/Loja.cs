@@ -19,7 +19,7 @@ namespace RoguelikeConsole
             itemsDaLoja[3] = Item.ItemsRaros();
 
             //Mostrar Loja
-            Console.WriteLine($"OURO ATUAL: {heroi.getOuro()}");
+            Console.WriteLine($"OURO ATUAL: {heroi.Ouro}");
             MostrarLoja();
             //Escolha de comprar
 
@@ -32,7 +32,7 @@ namespace RoguelikeConsole
                 
                 if(escolhaItem > 0 && escolhaItem<5)
                 {
-                    if(preco > heroi.getOuro())
+                    if(preco > heroi.Ouro)
                     {
                         Console.WriteLine("Você não tem ouro para comprar esse item");
                         escolhaItem = Inicio.VerificarRespostaInteira();

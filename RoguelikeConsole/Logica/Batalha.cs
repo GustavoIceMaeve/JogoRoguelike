@@ -10,7 +10,7 @@ namespace RoguelikeConsole
 
         public static bool Batalhando(Personagem heroi, Inimigos inimigo)
         {
-            int vidaHeroi = heroi.VidaAtual();
+            int vidaHeroi = heroi.Vida;
             int armaduraHeroi = heroi.ArmaduraAtual();
             int danoHeroi = heroi.DanoAtual();
 
@@ -20,7 +20,7 @@ namespace RoguelikeConsole
 
             while(true)
             {
-                Console.WriteLine($"{heroi.GetNome()}: +{vidaHeroi} &{armaduraHeroi} *{danoHeroi} VVVVVV {inimigo.nomeInimigo()}: +{vidaInimigo} &{armaduraInimigo} *{danoInimigo}");
+                Console.WriteLine($"{heroi.Nome}: +{vidaHeroi} &{armaduraHeroi} *{danoHeroi} VVVVVV {inimigo.nomeInimigo()}: +{vidaInimigo} &{armaduraInimigo} *{danoInimigo}");
                 Console.WriteLine($"Você da {danoHeroi} de dano no inimigo"); 
                 Console.ReadLine();
                 //Verifica se armadura do inimigo é maior que zero para dar dano nela antes
@@ -49,7 +49,7 @@ namespace RoguelikeConsole
                 }
 
 
-                Console.WriteLine($"{heroi.GetNome()}: +{vidaHeroi} &{armaduraHeroi} *{danoHeroi} VVVVVV {inimigo.nomeInimigo()}: +{vidaInimigo} &{armaduraInimigo} *{danoInimigo}");
+                Console.WriteLine($"{heroi.Nome}: +{vidaHeroi} &{armaduraHeroi} *{danoHeroi} VVVVVV {inimigo.nomeInimigo()}: +{vidaInimigo} &{armaduraInimigo} *{danoInimigo}");
                 Console.WriteLine($"Você toma {danoInimigo} de dano do inimigo");
                 Console.ReadLine();
                 if(armaduraHeroi > 0)

@@ -11,8 +11,6 @@ namespace RoguelikeConsole
 
 
     public Item[] item = new Item[3];
-
-    
         
     public Inventario()
         {
@@ -21,6 +19,7 @@ namespace RoguelikeConsole
                 item[i] = new Item();
             }
         }
+
     //Ação de ganhar um item
     public  void GanharItem(int Raridade)
     {
