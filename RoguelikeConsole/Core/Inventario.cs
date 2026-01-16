@@ -9,16 +9,21 @@ namespace RoguelikeConsole
     public class Inventario
     {
 
+    public List<Item> items = new List<Item>()
+    {
+        new Item(),
+        new Item(),
+        new Item()
+    };
 
-    public Item[] item = new Item[3];
-        
-    public Inventario()
+    public enum StatusDoItem
         {
-            for(int i = 0; i < 3; i++)
-            {
-                item[i] = new Item();
-            }
+            Vida,
+            Armadura,
+            Dano
         }
+        
+
 
     //Ação de ganhar um item
     public  void GanharItem(int Raridade)
@@ -55,28 +60,30 @@ namespace RoguelikeConsole
             //tipo = 2 Armadura
             //tipo = 3 Dano
             int soma =0;
-            if(tipo == 1)
+            StatusDoItem status = (StatusDoItem)tipo;
+            if(status == StatusDoItem.Vida)
             {
                 for(int i = 0; i < 3; i++)
                 {
-                    soma+=item[i].GetVida();
+                    soma+=items[i].GetVida();
                 }
-            }else if(tipo == 2)
+            }else if(status == StatusDoItem.Armadura)
             {
                 for(int i = 0; i < 3; i++)
                 {
-                    soma+=item[i].getArmadura();
+                    soma+=items[i].getArmadura();
                 }
             }
-            else
+            else if(status == StatusDoItem.Dano)
             {    
                 for(int i = 0; i < 3; i++)
                 {
-                    soma+=item[i].getDano();
+                    soma+=items[i].getDano();
                 }
             }
             return soma;
         }
+
     //Recebe o item da livraria e pergunta em qual slot encaixar
     public void trocarItem(Item lootRecebido)
         {
@@ -91,7 +98,7 @@ namespace RoguelikeConsole
                     Console.WriteLine("Numero Invalido");
                 } 
             }
-            item[slot-1] = lootRecebido;
+            items[slot-1] = lootRecebido;
             Console.WriteLine($"Item {lootRecebido.GetNome()} adicionado com sucesso no slot {slot}");
         }
 

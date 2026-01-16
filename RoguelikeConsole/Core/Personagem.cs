@@ -70,14 +70,14 @@ namespace RoguelikeConsole
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Vida: {Vida}/{VidaMaxima()}");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"Armadura: {ArmaduraBase + Inventario.StatusItem(2)}");
+            Console.WriteLine($"Armadura: {ArmaduraAtual()}");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Dano: {DanoBase + Inventario.StatusItem(3)}");
+            Console.WriteLine($"Dano: {DanoAtual()}");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"Inventario: ");
             for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine($"{Inventario.item[i].StatusItem()}");
+                Console.WriteLine($"{Inventario.items[i].StatusItem()}");
             }
         }
 
