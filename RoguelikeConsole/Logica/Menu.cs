@@ -2,6 +2,18 @@ namespace RoguelikeConsole
 {
     class MeuMenu
     {
+
+        enum OpcaoMenu
+        {
+            InimigoNormal,
+            InimigoElite,
+            InimigoBoss,
+            Curar,
+            Status,
+            Loja,
+            Sair,
+            Invalida
+        }
         public static void MenuPrincipal()
         {
             Console.WriteLine("BEM VINDO AO JOGO DE GUERRA");
@@ -14,17 +26,10 @@ namespace RoguelikeConsole
             Console.WriteLine("3 - Riquinho -- 10 de Vida, 0 de Armadura, 1  de dano, 4 de Ouro");
 
             int resposta;
-            do
-            {
-                resposta = Inicio.VerificarRespostaInteira();
-
-                if (resposta < 1 || resposta > 3)
-                    Console.WriteLine("Número inválido! Insira outro.");
-
-            } while (resposta < 1 || resposta > 3);
+            resposta = Inicio.VerificarRespostaInteira(1,3);
             Inventario inventario = new Inventario();
             Personagem heroi = new Personagem(nome, inventario, resposta);
-            bool sairDoJogo = true;
+            bool sairDoJogo = true, venceu = true;
             int raridadeDoLoot = 0;
             // 1 - Items Normais
             // 2 - Items Raros
@@ -42,99 +47,93 @@ namespace RoguelikeConsole
                 Console.WriteLine("6 - Visitar a loja");
                 Console.WriteLine("7 - Sair do jogo");
 
-                resposta = Inicio.VerificarRespostaInteira();
-                if (resposta == 1)
+                resposta = Inicio.VerificarRespostaInteira(1,7);
+                OpcaoMenu OpcaoEscolhida = (OpcaoMenu)resposta-1;
+                switch (OpcaoEscolhida)
                 {
-                    //Batalha Normal
-                    bool venceu = Batalha.Batalhando(heroi, Inimigos.criarInimigo());
-                    if (!venceu)
-                    {
-                        MensagemGameOver(rodadas);
-                        sairDoJogo = false;
+                    case OpcaoMenu.InimigoNormal:
+                        //Batalha Normal
+                        venceu = Batalha.Batalhando(heroi, Inimigos.criarInimigo());
+                        if (!venceu)
+                        {
+                            MensagemGameOver(rodadas);
+                            sairDoJogo = false;
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            raridadeDoLoot = 1;
+                            heroi.Inventario.GanharItem(raridadeDoLoot);
+                            heroi.VerificarVida();
+                            heroi.adicionarOuro(1);
+                            rodadas += 1;
+                        }
                         Console.ReadLine();
-                    }
-                    else
-                    {
-                        raridadeDoLoot = 1;
-                        heroi.Inventario.GanharItem(raridadeDoLoot);
-                        heroi.VerificarVida();
-                        heroi.adicionarOuro(1);
+                        break;
+                    case OpcaoMenu.InimigoElite:
+                        //Batalha Elite
+                        venceu = Batalha.Batalhando(heroi, Inimigos.criarInimigoElite());
+                        if (!venceu)
+                        {
+                            MensagemGameOver(rodadas);
+                            sairDoJogo = false;
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            raridadeDoLoot = 2;
+                            heroi.Inventario.GanharItem(raridadeDoLoot);
+                            heroi.VerificarVida();
+                            heroi.adicionarOuro(2);
+                            rodadas += 1;
+                        }
+                        Console.ReadLine();
+                        break;
+                    case OpcaoMenu.InimigoBoss:
+                        //Batalha Chefe
+                        venceu = Batalha.Batalhando(heroi, Inimigos.criarInimigoChefe());
+                        if (!venceu)
+                        {
+                            MensagemGameOver(rodadas);
+                            sairDoJogo = false;
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            rodadas += 1;
+                            Console.Clear();
+                            heroi.Status();
+                            Console.WriteLine($"Você ganhou em {rodadas} rodadas!! Parabéns {heroi.Nome}!");
+                            sairDoJogo = false;
+                            Console.ReadLine();
+                        }
+                        break;
+                    case OpcaoMenu.Curar:
+                        //Curar
+                        heroi.CurarVida(5);
                         rodadas += 1;
-                    }
-                    Console.ReadLine();
 
-                }
-                else if (resposta == 2)
-                {
-                    //Batalha Elite
-                    bool venceu = Batalha.Batalhando(heroi, Inimigos.criarInimigoElite());
-                    if (!venceu)
-                    {
-                        MensagemGameOver(rodadas);
-                        sairDoJogo = false;
                         Console.ReadLine();
-                    }
-                    else
-                    {
-                        raridadeDoLoot = 2;
-                        heroi.Inventario.GanharItem(raridadeDoLoot);
-                        heroi.VerificarVida();
-                        heroi.adicionarOuro(2);
-                        rodadas += 1;
-                    }
-                    Console.ReadLine();
-
-                }
-                else if (resposta == 3)
-                {
-                    //Batalha Chefe
-                    bool venceu = Batalha.Batalhando(heroi, Inimigos.criarInimigoChefe());
-                    if (!venceu)
-                    {
-                        MensagemGameOver(rodadas);
-                        sairDoJogo = false;
-                        Console.ReadLine();
-                    }
-                    else
-                    {
-                        rodadas += 1;
+                        break;
+                    case OpcaoMenu.Status:
+                        //Mostrar status do heroi
                         Console.Clear();
                         heroi.Status();
-                        Console.WriteLine($"Você ganhou em {rodadas} rodadas!! Parabéns {heroi.Nome}!");
-                        sairDoJogo = false;
                         Console.ReadLine();
-                    }
+                        break;
+                    case OpcaoMenu.Loja:
+                        //Mostrar Loja
+                        Loja.AbrirLoja(heroi);
+                        rodadas += 1;
+                        break;
+                    case OpcaoMenu.Sair:
+                        //SairDojogo
+                        sairDoJogo = false;
+                        Console.WriteLine("Obrigado por jogar a batalha de guerra");
+                        Console.WriteLine($"Você jogou {rodadas} rodadas do jogo.");
+                        Console.ReadLine();
+                        break;
                 }
-                else if (resposta == 4)
-                {
-                    //Curar
-                    heroi.CurarVida(5);
-                    rodadas += 1;
-
-                    Console.ReadLine();
-                }
-                else if (resposta == 5)
-                {
-                    //Mostrar status do heroi
-                    Console.Clear();
-                    heroi.Status();
-                    Console.ReadLine();
-                }
-                else if (resposta == 6)
-                {
-                    //Mostrar Loja
-                    Loja.AbrirLoja(heroi);
-                    rodadas += 1;
-                }
-                else if (resposta == 7)
-                {
-                    sairDoJogo = false;
-                    Console.WriteLine("Obrigado por jogar a batalha de guerra");
-                    Console.WriteLine($"Você jogou {rodadas} rodadas do jogo.");
-                    Console.ReadLine();
-                }
-
-
                 Console.Clear();
 
             }

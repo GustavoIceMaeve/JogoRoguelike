@@ -43,9 +43,11 @@ namespace RoguelikeConsole
             loot = Item.ItemsRaros();
         }
 
-        Console.WriteLine("Deseja adicionar em o item no seu inventario? 1 para SIM");
+        Console.WriteLine("Deseja adicionar em o item no seu inventario? ");
+        Console.WriteLine("1 - Sim");
+        Console.WriteLine("2 - Não");
         //Qualquer outro numero além de 1 descarta o item
-        int resposta = Inicio.VerificarRespostaInteira();
+        int resposta = Inicio.VerificarRespostaInteira(1,2);
         if(resposta == 1)
                 trocarItem(loot);
         else
@@ -87,17 +89,8 @@ namespace RoguelikeConsole
     //Recebe o item da livraria e pergunta em qual slot encaixar
     public void trocarItem(Item lootRecebido)
         {
-            int slot = 50;
-            //Numeros Validos são somente 1,2,3
-            while(slot > 4 || slot < 0)
-            {
-                Console.WriteLine("Em qual slot??");
-                slot = Inicio.VerificarRespostaInteira();
-                if(slot > 4 || slot < 0)
-                {
-                    Console.WriteLine("Numero Invalido");
-                } 
-            }
+            Console.WriteLine("Em qual slot??");
+            int slot = Inicio.VerificarRespostaInteira(1,3);
             items[slot-1] = lootRecebido;
             Console.WriteLine($"Item {lootRecebido.GetNome()} adicionado com sucesso no slot {slot}");
         }
