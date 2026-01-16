@@ -13,6 +13,12 @@ namespace RoguelikeConsole
             int vidaHeroi = heroi.Vida;
             int armaduraHeroi = heroi.ArmaduraAtual();
             int danoHeroi = heroi.DanoAtual();
+            int chanceCriticoHeroi = heroi.ChanceCriticoAtual();
+            int danoCriticoHeroi = heroi.DanoCriticoAtual();
+
+            bool critico = false;
+
+            int tentativaDeCritico = 0;
 
             int vidaInimigo = inimigo.vidaInimigo();
             int armaduraInimigo = inimigo.armaduraInimigo();
@@ -20,8 +26,25 @@ namespace RoguelikeConsole
 
             while(true)
             {
+
+                //Mostra os status
                 Console.WriteLine($"{heroi.Nome}: +{vidaHeroi} &{armaduraHeroi} *{danoHeroi} VVVVVV {inimigo.nomeInimigo()}: +{vidaInimigo} &{armaduraInimigo} *{danoInimigo}");
-                Console.WriteLine($"Você da {danoHeroi} de dano no inimigo"); 
+                //Verifica se o heroi deu critico
+                tentativaDeCritico = Random.Shared.Next(0, 101);
+                if (tentativaDeCritico > chanceCriticoHeroi)
+                    critico = false;
+                else
+                    critico = true;
+                Console.WriteLine($"Chance de Critico {chanceCriticoHeroi}, Numero Aleatorio {tentativaDeCritico}, Critou? = {critico}");
+                if (critico)
+                {
+                    danoHeroi *= danoCriticoHeroi;
+                    Console.WriteLine($"CRITICO! Você da {danoHeroi} de dano inimigo");
+                }
+                else
+                    Console.WriteLine($"Você da {danoHeroi} de dano no inimigo");
+
+
                 Console.ReadLine();
                 //Verifica se armadura do inimigo é maior que zero para dar dano nela antes
                 if(armaduraInimigo > 0)
@@ -47,8 +70,11 @@ namespace RoguelikeConsole
                     Console.ReadLine();
                     return true;
                 }
-
-
+                if (critico)
+                    danoHeroi /= danoCriticoHeroi;                
+                //
+                //                      TURNO DO INIMIGO
+                //
                 Console.WriteLine($"{heroi.Nome}: +{vidaHeroi} &{armaduraHeroi} *{danoHeroi} VVVVVV {inimigo.nomeInimigo()}: +{vidaInimigo} &{armaduraInimigo} *{danoInimigo}");
                 Console.WriteLine($"Você toma {danoInimigo} de dano do inimigo");
                 Console.ReadLine();

@@ -7,14 +7,37 @@ namespace RoguelikeConsole
 {
     public class Inimigos
     {
-        static int inimigosFeitosComuns=5;
-        static int inimigosFeitosElite=5;
-        static int inimigosFeitosChefe=5;
-
         string Nome;
         int Vida;
         int Armadura;
         int Dano;
+
+        static List<Inimigos> inimigosComuns = new List<Inimigos>()
+        {
+            new Inimigos("Slime Pequeno", 8, 0 , 1),
+            new Inimigos("Escudo Flutuante", 2 ,4, 2),
+            new Inimigos("Bandido com uma Espada", 3 , 0, 5),
+            new Inimigos("Bandido com um Escudo", 3 , 2, 3),
+            new Inimigos("Bandido com um Capuz", 6 , 0, 3)
+        };
+        static List<Inimigos> inimigosElite = new List<Inimigos>()
+        {
+            new Inimigos("Slime Grande", 15 , 0 , 3),
+            new Inimigos("Gangue de Escudos Flutuantes", 3 , 10, 4),
+            new Inimigos("Cavaleiro com Espada Grande", 4 , 4, 8),
+            new Inimigos("Cavaleiro com Escudo Grande", 4 , 8, 4),
+            new Inimigos("Cavaleiro com Capacete de Metal", 8 , 3, 4)
+        };
+        static List<Inimigos> inimigosChefe = new List<Inimigos>()
+        {
+            new Inimigos("Slime Chefe", 25, 0 , 5),
+            new Inimigos("Levitador de Escudos", 4 ,16, 6),
+            new Inimigos("Cavaleiro com Ódio", 10 , 5, 12),
+            new Inimigos("Cavaleiro Covarde", 20 , 20 , 5),
+            new Inimigos("Cavaleiro Mestre", 14 , 14, 8)
+        };
+
+
         public Inimigos(string nome, int vida, int armadura, int dano)
         {
             Nome = nome;
@@ -26,45 +49,25 @@ namespace RoguelikeConsole
         public static Inimigos criarInimigo()
         {
             //Adicionar a inimigosFeitos o número de inimigos
-            int numeroDoItem = Random.Shared.Next(0,inimigosFeitosComuns);
-            Inimigos[] tipoDeInimigos = new Inimigos[inimigosFeitosComuns];
-            tipoDeInimigos[0] = new Inimigos("Slime Pequeno", 8, 0 , 1);
-            tipoDeInimigos[1] = new Inimigos("Escudo Flutuante", 2 ,4, 2);
-            tipoDeInimigos[2] = new Inimigos("Bandido com uma Espada", 3 , 0, 5);
-            tipoDeInimigos[3] = new Inimigos("Bandido com um Escudo", 3 , 2, 3);
-            tipoDeInimigos[4] = new Inimigos("Bandido com um Capuz", 6 , 0, 3);
+            int numeroDoItem = Random.Shared.Next(0,inimigosComuns.Count);
 
-
-            return tipoDeInimigos[numeroDoItem];
+            return inimigosComuns[numeroDoItem];
         }
 
         public static Inimigos criarInimigoElite()
         {
             //Adicionar a inimigosFeitos o número de inimigos
-            int numeroDoItem = Random.Shared.Next(0,inimigosFeitosElite);
-            Inimigos[] tipoDeInimigos = new Inimigos[inimigosFeitosElite];
-            tipoDeInimigos[0] = new Inimigos("Slime Grande", 15 , 0 , 3);
-            tipoDeInimigos[1] = new Inimigos("Gangue de Escudos Flutuantes", 3 , 10, 4);
-            tipoDeInimigos[2] = new Inimigos("Cavaleiro com Espada Grande", 4 , 4, 8);
-            tipoDeInimigos[3] = new Inimigos("Cavaleiro com Escudo Grande", 4 , 8, 4);
-            tipoDeInimigos[4] = new Inimigos("Cavaleiro com Capacete de Metal", 8 , 3, 4);
+            int numeroDoItem = Random.Shared.Next(0,inimigosElite.Count);
 
-
-            return tipoDeInimigos[numeroDoItem];
+            return inimigosElite[numeroDoItem];
         }
 
         public static Inimigos criarInimigoChefe()
         {
             //Adicionar a inimigosFeitos o número de inimigos
-            int numeroDoItem = Random.Shared.Next(0,inimigosFeitosChefe);
-            Inimigos[] tipoDeInimigos = new Inimigos[inimigosFeitosChefe];
-            tipoDeInimigos[0] = new Inimigos("Slime Chefe", 25, 0 , 5);
-            tipoDeInimigos[1] = new Inimigos("Levitador de Escudos", 4 ,16, 6);
-            tipoDeInimigos[2] = new Inimigos("Cavaleiro com Ódio", 10 , 5, 12);
-            tipoDeInimigos[3] = new Inimigos("Cavaleiro Covarde", 20 , 20 , 5);
-            tipoDeInimigos[4] = new Inimigos("Cavaleiro Mestre", 14 , 14, 8);
+            int numeroDoItem = Random.Shared.Next(0,inimigosChefe.Count);
 
-            return tipoDeInimigos[numeroDoItem];
+            return inimigosChefe[numeroDoItem];
         }
 
         public int danoInimigo()

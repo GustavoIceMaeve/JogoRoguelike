@@ -27,7 +27,7 @@ namespace RoguelikeConsole
             }
             catch
             {
-                Console.WriteLine("Você diigtou algo que não é um número. Tente novamente");
+                Console.WriteLine("Você digitou algo que não é um número. Tente novamente");
             }
 
             if(resposta < min || resposta > max)

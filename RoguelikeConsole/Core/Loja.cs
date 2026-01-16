@@ -44,7 +44,6 @@ namespace RoguelikeConsole
                         heroi.adicionarOuro((preco)*-1); 
                         escolhaItem = -1;
                     }
-
                 }
                 else
                 {

@@ -8,10 +8,14 @@ namespace RoguelikeConsole
     public class Personagem
     {
         public string Nome { get; set; }
-        public EscolhaClasse Classe { get; set; }
         public int Vida {get; set; }
         public int Ouro { get; set; }
+        public int ChanceCritico { get; set; }
+        public int DanoCritico { get; set; }
+        public EscolhaClasse Classe { get; set; }
+
         public Inventario Inventario;
+
 
         int VidaBase { get; set; }
         int ArmaduraBase { get; set; }
@@ -30,7 +34,6 @@ namespace RoguelikeConsole
             Inventario = inventario;
             EscolhaClasse classeEscolhida = (EscolhaClasse)resposta;
             Classe = classeEscolhida;
-            Console.WriteLine($"{classeEscolhida}, {classeEscolhida == EscolhaClasse.Guerreiro},");
 
             switch (classeEscolhida)
             {
@@ -39,6 +42,8 @@ namespace RoguelikeConsole
                     ArmaduraBase = 0;
                     DanoBase = 1;
                     Ouro = 0;
+                    ChanceCritico = 20;
+                    DanoCritico = 2;
                     break;
 
                 case EscolhaClasse.Espadachim:
@@ -46,6 +51,8 @@ namespace RoguelikeConsole
                     ArmaduraBase = 0;
                     DanoBase = 2;
                     Ouro = 0;
+                    ChanceCritico = 20;
+                    DanoCritico = 2;
                     break;
 
                 case EscolhaClasse.Riquinho:
@@ -53,6 +60,8 @@ namespace RoguelikeConsole
                     ArmaduraBase = 0;
                     DanoBase = 1;
                     Ouro = 4;
+                    ChanceCritico = 20;
+                    DanoCritico = 2;
                     break;
             }
 
@@ -92,6 +101,14 @@ namespace RoguelikeConsole
         public int ArmaduraAtual()
         {
             return ArmaduraBase+Inventario.StatusItem(2);
+        }
+        public int ChanceCriticoAtual()
+        {
+            return ChanceCritico;
+        }
+        public int DanoCriticoAtual()
+        {
+            return DanoCritico;
         }
 
         public void perderVida(int DanoTomado)
