@@ -24,11 +24,29 @@ namespace RoguelikeConsole
             int armaduraInimigo = inimigo.armaduraInimigo();
             int danoInimigo = inimigo.danoInimigo();
 
-            while(true)
-            {
+            Console.Clear();
 
+            while (true)
+            {
                 //Mostra os status
-                Console.WriteLine($"{heroi.Nome}: +{vidaHeroi} &{armaduraHeroi} *{danoHeroi} VVVVVV {inimigo.nomeInimigo()}: +{vidaInimigo} &{armaduraInimigo} *{danoInimigo}");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"{heroi.Nome}:\t " +
+                    $"+{vidaHeroi}\t " +
+                    $"&{armaduraHeroi}\t *" +
+                    $"{danoHeroi}\t ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(
+                    $"{inimigo.nomeInimigo()}:\t " +
+                    $"+{vidaInimigo}\t " +
+                    $"&{armaduraInimigo}\t" +
+                    $" *{danoInimigo}\t");
+
+                //
+                //  TURNO DO JOGADOR
+                //
+
+                Console.ForegroundColor = ConsoleColor.Green;
+
                 //Verifica se o heroi deu critico
                 tentativaDeCritico = Random.Shared.Next(0, 101);
                 if (tentativaDeCritico > chanceCriticoHeroi)
@@ -39,6 +57,7 @@ namespace RoguelikeConsole
                 if (critico)
                 {
                     danoHeroi *= danoCriticoHeroi;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine($"CRITICO! Você da {danoHeroi} de dano inimigo");
                 }
                 else
@@ -64,21 +83,34 @@ namespace RoguelikeConsole
                 {
                     vidaInimigo-=danoHeroi;  
                 }
+                //Termina a batalha se a vida do inimigo chega a zero
                 if(vidaInimigo <= 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("O inimigo morreu!");
                     Console.ReadLine();
                     return true;
                 }
                 if (critico)
-                    danoHeroi /= danoCriticoHeroi;                
+                    danoHeroi /= danoCriticoHeroi;
+
+                //Mostra os status
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"{heroi.Nome}:\t " +
+                    $"+{vidaHeroi}\t " +
+                    $"&{armaduraHeroi}\t *" +
+                    $"{danoHeroi}\t ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(
+                    $"{inimigo.nomeInimigo()}:\t " +
+                    $"+{vidaInimigo}\t " +
+                    $"&{armaduraInimigo}\t" +
+                    $" *{danoInimigo}\t");
                 //
-                //                      TURNO DO INIMIGO
+                //  TURNO DO INIMIGO
                 //
-                Console.WriteLine($"{heroi.Nome}: +{vidaHeroi} &{armaduraHeroi} *{danoHeroi} VVVVVV {inimigo.nomeInimigo()}: +{vidaInimigo} &{armaduraInimigo} *{danoInimigo}");
                 Console.WriteLine($"Você toma {danoInimigo} de dano do inimigo");
-                Console.ReadLine();
-                if(armaduraHeroi > 0)
+                if (armaduraHeroi > 0)
                 {
                     if(armaduraHeroi < danoInimigo)
                     {
@@ -100,16 +132,19 @@ namespace RoguelikeConsole
                 }
                 if(vidaHeroi <= 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Você morreu");
                     Console.ReadLine();
                     return false;
                 }
 
+                Console.ReadLine();
 
             }
 
 
 
         }
+
     }
 }

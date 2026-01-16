@@ -21,12 +21,13 @@ namespace RoguelikeConsole
             string nome = Console.ReadLine();
             Console.WriteLine($"Bem vindo ó grande {nome}");
             Console.WriteLine("Qual será sua classe?");
-            Console.WriteLine("1 - Guerreiro -- 15 de Vida, 0 de Armadura, 1 de dano, 0 de Ouro");
-            Console.WriteLine("2 - Espadachim -- 10 de Vida, 0 de Armadura, 2 de dano, 0 de Ouro");
-            Console.WriteLine("3 - Riquinho -- 10 de Vida, 0 de Armadura, 1  de dano, 4 de Ouro");
+            Console.WriteLine("1 - Guerreiro -- 15 de Vida, 0 de Armadura, 1 de dano, 0 de Ouro, 20% de critico, 2* o dano de critico");
+            Console.WriteLine("2 - Espadachim -- 10 de Vida, 0 de Armadura, 2 de dano, 0 de Ouro, 20% de critico, 2* o dano de critico");
+            Console.WriteLine("3 - Riquinho -- 10 de Vida, 0 de Armadura, 1  de dano, 4 de Ouro, 20% de critico, 2* o dano de critico");
+            Console.WriteLine("4 - Assassino -- 10 de Vida, 0 de Armadura, 1 de dano, 0 de Ouro, 20% de critico, 4* o dano de critico");
 
             int resposta;
-            resposta = Inicio.VerificarRespostaInteira(1,3);
+            resposta = Inicio.VerificarRespostaInteira(1,4);
             Inventario inventario = new Inventario();
             Personagem heroi = new Personagem(nome, inventario, resposta);
             bool sairDoJogo = true, venceu = true;

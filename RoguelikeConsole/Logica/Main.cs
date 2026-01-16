@@ -28,19 +28,34 @@ namespace RoguelikeConsole
             catch
             {
                 Console.WriteLine("Você digitou algo que não é um número. Tente novamente");
+                numeroInteiro = false;
             }
 
             if(resposta < min || resposta > max)
                 {
-                    Console.WriteLine("Número fora do alcance! Digite um número entre os indicados!");
+                    if (numeroInteiro)
+                    {
+                        Console.WriteLine("Número fora do alcance! Digite um número entre os indicados!");
+                        Console.WriteLine("Números Validos:");
+
+                        for (int i = 0; i< max; i++)
+                        {
+                            if (i + 1 == max)
+                                Console.WriteLine($"{i + 1}");
+                            else 
+                                Console.Write($"{i + 1} ,");
+
+                        }
+                    }
                 }
                 else
                 {
                     numeroValido = true;
                 }
 
-         }
 
+         }
+            Console.Clear();
             return resposta;
         }
         public static int VerificarRespostaInteira()

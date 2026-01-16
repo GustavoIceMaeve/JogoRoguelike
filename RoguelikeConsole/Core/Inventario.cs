@@ -89,10 +89,16 @@ namespace RoguelikeConsole
     //Recebe o item da livraria e pergunta em qual slot encaixar
     public void trocarItem(Item lootRecebido)
         {
-            Console.WriteLine("Em qual slot??");
+            Console.WriteLine("Em qual slot??"); 
+            Console.WriteLine($"Inventario: ");
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"SLOT {i+1} --> {items[i].StatusItem()}");
+            }
             int slot = Inicio.VerificarRespostaInteira(1,3);
             items[slot-1] = lootRecebido;
             Console.WriteLine($"Item {lootRecebido.GetNome()} adicionado com sucesso no slot {slot}");
+            Console.ReadLine();
         }
 
 

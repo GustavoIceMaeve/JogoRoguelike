@@ -25,7 +25,8 @@ namespace RoguelikeConsole
         {
             Guerreiro = 1,
             Espadachim = 2,
-            Riquinho = 3
+            Riquinho = 3,
+            Assassino = 4
         }
 
         public Personagem(string nome,Inventario inventario,int resposta )
@@ -63,6 +64,15 @@ namespace RoguelikeConsole
                     ChanceCritico = 20;
                     DanoCritico = 2;
                     break;
+
+                case EscolhaClasse.Assassino:
+                    VidaBase = 15;
+                    ArmaduraBase = 0;
+                    DanoBase = 1;
+                    Ouro = 4;
+                    ChanceCritico = 20;
+                    DanoCritico = 4;
+                    break;
             }
 
             Vida = VidaBase;
@@ -73,7 +83,6 @@ namespace RoguelikeConsole
         {
             Console.WriteLine($"Nome: {Nome}");
             Console.WriteLine($"Classe: {Classe}");
-            Console.WriteLine($"Stats:");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Ouro: {Ouro}");
             Console.ForegroundColor = ConsoleColor.Green;
@@ -82,6 +91,8 @@ namespace RoguelikeConsole
             Console.WriteLine($"Armadura: {ArmaduraAtual()}");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Dano: {DanoAtual()}");
+            Console.WriteLine($"Chance de Critico: {ChanceCritico}");
+            Console.WriteLine($"Multiplicador de Critico: {DanoCritico}");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"Inventario: ");
             for (int i = 0; i < 3; i++)
