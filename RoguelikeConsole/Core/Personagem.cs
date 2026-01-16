@@ -49,12 +49,17 @@ namespace RoguelikeConsole
             Console.WriteLine($"Nome: {Nome}");
             Console.WriteLine($"Classe: {Classe}");
             Console.WriteLine($"Stats:");
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Ouro: {Ouro}");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Vida: {Vida}/{VidaMaxima()}");
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"Armadura: {ArmaduraBase + Inventario.StatusItem(2)}");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Dano: {DanoBase + Inventario.StatusItem(3)}");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine($"Inventario: ");
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Console.WriteLine($"{Inventario.item[i].StatusItem()}");
             }
