@@ -7,10 +7,10 @@ namespace RoguelikeConsole
 {
     public class Inimigos
     {
-        string Nome;
-        int Vida;
-        int Armadura;
-        int Dano;
+        public string Nome { get; set; }
+        public int Vida { get; set; }
+        public int Armadura { get; set; }
+        public int Dano { get; set; }
 
         static List<Inimigos> inimigosComuns = new List<Inimigos>()
         {
@@ -70,23 +70,5 @@ namespace RoguelikeConsole
             return inimigosChefe[numeroDoItem];
         }
 
-        public int danoInimigo()
-        {
-            return Dano;
-        }
-
-        public int vidaInimigo(){
-            return Vida;
-        }
-
-        public int armaduraInimigo()
-        {
-            return Armadura;
-        }
-
-        public string nomeInimigo()
-        {
-            return Nome;
-        }
     }
 }

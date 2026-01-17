@@ -10,10 +10,10 @@ namespace RoguelikeConsole
     
     public class Item
     {
-        static int ItemsFeitosNormais = 10;
-        static int ItemsFeitosRaros = 10;
-        string Nome = "Vazio";
-        int Dano = 0,Armadura = 0,Vida = 0;
+        public string Nome { get; set; }
+        public int Dano { get; set; }
+        public int Armadura { get; set; }
+        public int Vida { get; set; }
 
         static List<Item> itemsNormais = new List<Item>()
         {
@@ -64,8 +64,16 @@ namespace RoguelikeConsole
         {
             //ItemsFeitos tem que ser igual ao total de items na lista
             int numeroDoItem = Random.Shared.Next(0, itemsNormais.Count);
-            Console.WriteLine($"Parabéns! Você ganhou uma {itemsNormais[numeroDoItem].Nome}!"
-            + $"Os Status são +{itemsNormais[numeroDoItem].Vida}  &{itemsNormais[numeroDoItem].Armadura}  *{itemsNormais[numeroDoItem].Dano}");
+            Item itemSorteado = itemsNormais[numeroDoItem];
+            Console.WriteLine($"Parabéns você ganhou {itemSorteado.Nome}!");
+            Console.WriteLine($"Os Status são:\n" +
+                $"{(itemSorteado.Vida != 0 ? $"HP: {itemSorteado.Vida}\n" : "")}" +
+                $"{(itemSorteado.Armadura != 0 ? $"ESC: {itemSorteado.Armadura}\n" : "")}" +
+                $"{(itemSorteado.Dano != 0 ? $"DANO: {itemSorteado.Dano}\n" : "")}" +
+                $"");
+
+
+
 
             return itemsNormais[numeroDoItem];
         }
@@ -74,33 +82,28 @@ namespace RoguelikeConsole
         {
             //ItemsFeitos tem que ser igual ao total de items na lista
             int numeroDoItem = Random.Shared.Next(0,itemsRaros.Count);
+            Item itemSorteado = itemsRaros[numeroDoItem];
 
-            Console.WriteLine($"Parabéns! Você ganhou uma {itemsRaros[numeroDoItem].Nome}!"
-            + $"Os Status são +{itemsRaros[numeroDoItem].Vida}  &{itemsRaros[numeroDoItem].Armadura}  *{itemsRaros[numeroDoItem].Dano}");
+            Console.WriteLine($"Parabéns você ganhou {itemSorteado.Nome}!");
+            Console.WriteLine($"Os Status são:\n" +
+                $"{(itemSorteado.Vida != 0 ? $"HP: {itemSorteado.Vida}\n" : "")}" +
+                $"{(itemSorteado.Armadura != 0 ? $"ESC: {itemSorteado.Armadura}\n" : "")}" +
+                $"{(itemSorteado.Dano != 0 ? $"DANO: {itemSorteado.Dano}\n" : "")}"
+            );
 
             return itemsRaros[numeroDoItem];
         }
 
-        public string StatusItem()
+        public string StatusDoItemEscrito()
         {
-            return $"{Nome} --> +{Vida}  &{Armadura}  *{Dano}";
+            if(!(Nome == "Vazio"))
+            {
+                return $"{Nome} --> " +
+                    $"{(Vida != 0 ? $"HP: {Vida} ": "")}" +
+                    $"{(Armadura != 0 ? $"ESC: {Armadura} " : "")}" +
+                    $"{(Dano != 0 ? $"DANO: {Dano}": "")}"  ;
+            }
+            return "SLOT VAZIO ";
         }
-        public string GetNome()
-        {
-            return Nome;
-        }
-        public int GetVida()
-        {
-            return Vida;
-        }
-        public int getArmadura()
-        {
-            return Armadura;
-        }
-        public int getDano()
-        {
-            return Dano;
-        }
-
     }
 }

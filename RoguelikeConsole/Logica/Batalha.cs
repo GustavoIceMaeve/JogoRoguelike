@@ -20,9 +20,9 @@ namespace RoguelikeConsole
 
             int tentativaDeCritico = 0;
 
-            int vidaInimigo = inimigo.vidaInimigo();
-            int armaduraInimigo = inimigo.armaduraInimigo();
-            int danoInimigo = inimigo.danoInimigo();
+            int vidaInimigo = inimigo.Vida;
+            int armaduraInimigo = inimigo.Armadura;
+            int danoInimigo = inimigo.Dano;
 
             Console.Clear();
 
@@ -30,16 +30,16 @@ namespace RoguelikeConsole
             {
                 //Mostra os status
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"{heroi.Nome}:\t " +
-                    $"+{vidaHeroi}\t " +
-                    $"&{armaduraHeroi}\t *" +
-                    $"{danoHeroi}\t ");
+                Console.WriteLine($"{heroi.Nome,-25}: " +
+                    $"HP:{vidaHeroi} " +
+                    $"ESC:{armaduraHeroi}\t" +
+                    $"DANO:{danoHeroi}\t ");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(
-                    $"{inimigo.nomeInimigo()}:\t " +
-                    $"+{vidaInimigo}\t " +
-                    $"&{armaduraInimigo}\t" +
-                    $" *{danoInimigo}\t");
+                    $"{inimigo.Nome,-25}: " +
+                    $"HP:{vidaInimigo}\t " +
+                    $"ESC:{armaduraInimigo}\t" +
+                    $"DANO:{danoInimigo}\t");
 
                 //
                 //  TURNO DO JOGADOR
@@ -96,19 +96,41 @@ namespace RoguelikeConsole
 
                 //Mostra os status
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"{heroi.Nome}:\t " +
-                    $"+{vidaHeroi}\t " +
-                    $"&{armaduraHeroi}\t *" +
-                    $"{danoHeroi}\t ");
+                Console.WriteLine($"{heroi.Nome,-25}: " +
+                    $"HP:{vidaHeroi} " +
+                    $"ESC:{armaduraHeroi}\t" +
+                    $"DANO:{danoHeroi}\t ");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(
-                    $"{inimigo.nomeInimigo()}:\t " +
-                    $"+{vidaInimigo}\t " +
-                    $"&{armaduraInimigo}\t" +
-                    $" *{danoInimigo}\t");
+                    $"{inimigo.Nome,-25}: " +
+                    $"HP:{vidaInimigo}\t " +
+                    $"ESC:{armaduraInimigo}\t" +
+                    $"DANO:{danoInimigo}\t");
+
+
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
                 //
                 //  TURNO DO INIMIGO
                 //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+                //
+
+
                 Console.WriteLine($"Você toma {danoInimigo} de dano do inimigo");
                 if (armaduraHeroi > 0)
                 {

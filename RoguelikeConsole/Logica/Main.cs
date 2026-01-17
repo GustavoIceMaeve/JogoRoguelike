@@ -8,6 +8,7 @@ namespace RoguelikeConsole
 
         static void Main()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             MeuMenu.MenuPrincipal();
         }
 
@@ -55,9 +56,9 @@ namespace RoguelikeConsole
 
 
          }
-            Console.Clear();
             return resposta;
         }
+
         public static int VerificarRespostaInteira()
         {
             int resposta = 0;

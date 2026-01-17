@@ -57,7 +57,7 @@ namespace RoguelikeConsole
                     break;
 
                 case EscolhaClasse.Riquinho:
-                    VidaBase = 15;
+                    VidaBase = 10;
                     ArmaduraBase = 0;
                     DanoBase = 1;
                     Ouro = 4;
@@ -66,7 +66,7 @@ namespace RoguelikeConsole
                     break;
 
                 case EscolhaClasse.Assassino:
-                    VidaBase = 15;
+                    VidaBase = 10;
                     ArmaduraBase = 0;
                     DanoBase = 1;
                     Ouro = 4;
@@ -97,7 +97,7 @@ namespace RoguelikeConsole
             Console.WriteLine($"Inventario: ");
             for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine($"{Inventario.items[i].StatusItem()}");
+                Console.WriteLine($"{Inventario.items[i].StatusDoItemEscrito()}");
             }
         }
 
@@ -105,14 +105,15 @@ namespace RoguelikeConsole
         {
             return VidaBase+Inventario.StatusItem(1);
         }
+        public int ArmaduraAtual()
+        {
+            return ArmaduraBase + Inventario.StatusItem(2);
+        }
         public int DanoAtual()
         {
             return DanoBase+Inventario.StatusItem(3);
         }
-        public int ArmaduraAtual()
-        {
-            return ArmaduraBase+Inventario.StatusItem(2);
-        }
+
         public int ChanceCriticoAtual()
         {
             return ChanceCritico;
@@ -141,22 +142,22 @@ namespace RoguelikeConsole
 
         public void CurarVida(int cura)
         {
-            if(Vida == 10 + Inventario.StatusItem(1))
+            if(Vida == VidaBase + Inventario.StatusItem(1))
             {
                 Console.WriteLine("Sua vida já está no maximo.");
                 Console.WriteLine("Digite enter...");
 
             }
-            else if(Vida+cura > 10 + Inventario.StatusItem(1))
+            else if(Vida+cura > VidaBase + Inventario.StatusItem(1))
             {
-                Vida = 10 + Inventario.StatusItem(1);
-                Console.WriteLine($"Curado até a vida máxima. Vida Atual: {Vida}/{10 + Inventario.StatusItem(1)}");
+                Vida = VidaBase + Inventario.StatusItem(1);
+                Console.WriteLine($"Curado até a vida máxima. Vida Atual: {Vida}/{VidaBase + Inventario.StatusItem(1)}");
                 Console.WriteLine("Digite enter...");
             }
             else
             {
                 Vida+=5;
-                Console.WriteLine($"Curado 5 de Vida. Vida Atual: {Vida}/{10 + Inventario.StatusItem(1)}");
+                Console.WriteLine($"Curado 5 de Vida. Vida Atual: {Vida}/{VidaBase + Inventario.StatusItem(1)}");
                 Console.WriteLine("Digite enter...");
             }
         }

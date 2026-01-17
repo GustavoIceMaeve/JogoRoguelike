@@ -18,9 +18,9 @@ namespace RoguelikeConsole
 
     public enum StatusDoItem
         {
-            Vida,
-            Armadura,
-            Dano
+            Vida = 1,
+            Armadura = 2,
+            Dano = 3
         }
         
 
@@ -51,7 +51,7 @@ namespace RoguelikeConsole
         if(resposta == 1)
                 trocarItem(loot);
         else
-            Console.WriteLine("Item descartado!!");         
+            Console.WriteLine("Item descartado!!");      
     
     }
 
@@ -67,20 +67,20 @@ namespace RoguelikeConsole
             {
                 for(int i = 0; i < 3; i++)
                 {
-                    soma+=items[i].GetVida();
+                    soma+=items[i].Vida;
                 }
             }else if(status == StatusDoItem.Armadura)
             {
                 for(int i = 0; i < 3; i++)
                 {
-                    soma+=items[i].getArmadura();
+                    soma+=items[i].Armadura;
                 }
             }
             else if(status == StatusDoItem.Dano)
             {    
                 for(int i = 0; i < 3; i++)
                 {
-                    soma+=items[i].getDano();
+                    soma+=items[i].Dano;
                 }
             }
             return soma;
@@ -93,12 +93,11 @@ namespace RoguelikeConsole
             Console.WriteLine($"Inventario: ");
             for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine($"SLOT {i+1} --> {items[i].StatusItem()}");
+                Console.WriteLine($"SLOT {i+1} --> {items[i].StatusDoItemEscrito()}");
             }
             int slot = Inicio.VerificarRespostaInteira(1,3);
             items[slot-1] = lootRecebido;
-            Console.WriteLine($"Item {lootRecebido.GetNome()} adicionado com sucesso no slot {slot}");
-            Console.ReadLine();
+            Console.WriteLine($"Item {lootRecebido.Nome} adicionado com sucesso no slot {slot}");
         }
 
 

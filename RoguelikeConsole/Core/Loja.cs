@@ -63,7 +63,7 @@ namespace RoguelikeConsole
             foreach(Item i in itemsDaLoja)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"{i.GetNome()} -- +{i.GetVida()} -- &{i.getArmadura()} -- *{i.getDano()} -- ${preco*2}");
+                Console.WriteLine($"{i.Nome} -- HP: {i.Vida} -- ESC: {i.Armadura} -- DANO: {i.Dano} -- ${preco*2}");
                 preco++;
             }
             Console.ForegroundColor = ConsoleColor.White;

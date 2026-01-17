@@ -16,7 +16,7 @@ namespace RoguelikeConsole
         }
         public static void MenuPrincipal()
         {
-            Console.WriteLine("BEM VINDO AO JOGO DE GUERRA");
+            Console.WriteLine("Bem vindo ao meu primeiro jogo Roguelike!");
             Console.WriteLine("Qual nome do seu herói?");
             string nome = Console.ReadLine();
             Console.WriteLine($"Bem vindo ó grande {nome}");
@@ -39,7 +39,8 @@ namespace RoguelikeConsole
             //Menu do Jogo
             while (sairDoJogo)
             {
-                Console.WriteLine("O QUE DESEJA FAZER?");
+                Console.Clear();
+                Console.WriteLine("Escolha uma das opções abaixo");
                 Console.WriteLine("1 - Enfrentar um inimigo normal");
                 Console.WriteLine("2 - Enfrentar um inimigo de Elite");
                 Console.WriteLine("3 - Enfrentar o chefe");
@@ -47,6 +48,11 @@ namespace RoguelikeConsole
                 Console.WriteLine("5 - Verificar status");
                 Console.WriteLine("6 - Visitar a loja");
                 Console.WriteLine("7 - Sair do jogo");
+
+                Console.WriteLine("\n\n\n");
+                heroi.VerificarVida();
+                heroi.Status();
+                Console.WriteLine($"Total de Rodadas: {rodadas}");
 
                 resposta = Inicio.VerificarRespostaInteira(1,7);
                 OpcaoMenu OpcaoEscolhida = (OpcaoMenu)resposta-1;
